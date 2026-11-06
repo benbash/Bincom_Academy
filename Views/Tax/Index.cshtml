@@ -1,0 +1,356 @@
+﻿
+@model BashCVPortfolio.Models.TaxCalculatorViewModel
+
+@{
+    ViewData["Title"] = "Nigeria Tax Calculator";
+}
+
+<!-- PAGE INTRODUCTION -->
+<section class="tax-hero">
+
+    <div class="container">
+
+        <p class="tax-eyebrow">FINANCIAL TOOL</p>
+
+        <h1>Nigeria Personal Income Tax Calculator</h1>
+
+        <p>
+            Estimate your annual personal income tax using
+            Nigeria's applicable progressive tax bands.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- CALCULATOR SECTION -->
+<section class="tax-content">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <!-- INPUT FORM -->
+            <div class="col-lg-7">
+
+                <div class="tax-form-card">
+
+                    <h2>Enter Your Income Details</h2>
+
+                    <p class="tax-intro">
+                        Enter your annual income and eligible deductions
+                        to estimate your personal income tax.
+                    </p>
+
+                    <form asp-controller="Tax"
+                          asp-action="Index"
+                          method="post">
+
+                        <div asp-validation-summary="All"
+                             class="text-danger mb-3">
+                        </div>
+
+
+                        <h5 class="tax-form-heading">
+                            Annual Income
+                        </h5>
+
+                        <div class="mb-4">
+
+                            <label asp-for="AnnualGrossIncome"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="AnnualGrossIncome"
+                                   type="number"
+                                   class="form-control"
+                                   min="0"
+                                   step="0.01"
+                                   placeholder="e.g. 5000000" />
+
+                            <span asp-validation-for="AnnualGrossIncome"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+
+                        <h5 class="tax-form-heading">
+                            Eligible Deductions
+                        </h5>
+
+                        <p class="tax-help-text">
+                            Enter your actual annual qualifying amounts.
+                            Leave fields at zero if they do not apply.
+                        </p>
+
+
+                        <div class="mb-3">
+
+                            <label asp-for="AnnualRentPaid"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="AnnualRentPaid"
+                                   type="number"
+                                   class="form-control"
+                                   min="0"
+                                   step="0.01"
+                                   placeholder="e.g. 1200000" />
+
+                            <span asp-validation-for="AnnualRentPaid"
+                                  class="text-danger">
+                            </span>
+
+                            <small class="form-text text-muted">
+                                Rent relief is calculated separately,
+                                subject to the applicable statutory limit.
+                            </small>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label asp-for="PensionContribution"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="PensionContribution"
+                                   type="number"
+                                   class="form-control"
+                                   min="0"
+                                   step="0.01" />
+
+                            <span asp-validation-for="PensionContribution"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label asp-for="NHFContribution"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="NHFContribution"
+                                   type="number"
+                                   class="form-control"
+                                   min="0"
+                                   step="0.01" />
+
+                            <span asp-validation-for="NHFContribution"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label asp-for="NHISContribution"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="NHISContribution"
+                                   type="number"
+                                   class="form-control"
+                                   min="0"
+                                   step="0.01" />
+
+                            <span asp-validation-for="NHISContribution"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label asp-for="MortgageInterest"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="MortgageInterest"
+                                   type="number"
+                                   class="form-control"
+                                   min="0"
+                                   step="0.01" />
+
+                            <span asp-validation-for="MortgageInterest"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+
+                        <div class="mb-4">
+
+                            <label asp-for="LifeInsurancePremium"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="LifeInsurancePremium"
+                                   type="number"
+                                   class="form-control"
+                                   min="0"
+                                   step="0.01" />
+
+                            <span asp-validation-for="LifeInsurancePremium"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+
+                        <button type="submit"
+                                class="btn btn-primary tax-submit-btn">
+                            Calculate My Tax
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+            <!-- RESULTS PANEL -->
+            <div class="col-lg-5">
+
+                <div class="tax-results-card">
+
+                    <h2>Your Tax Estimate</h2>
+
+                    <p class="tax-intro">
+                        Your calculation results will appear here
+                        after you submit the form.
+                    </p>
+
+                    @if (Context.Request.Method == "POST"
+                        && ViewData.ModelState.IsValid)
+                    {
+                        <div class="tax-result-main">
+
+                            <p>Estimated Annual Tax</p>
+
+                            <h3>
+                                ₦@Model.AnnualTaxPayable.ToString("N2")
+                            </h3>
+
+                        </div>
+
+
+                        <div class="tax-result-row">
+                            <span>Annual Gross Income</span>
+
+                            <strong>
+                                ₦@Model.AnnualGrossIncome.ToString("N2")
+                            </strong>
+                        </div>
+
+
+                        <div class="tax-result-row">
+                            <span>Rent Relief</span>
+
+                            <strong>
+                                ₦@Model.RentRelief.ToString("N2")
+                            </strong>
+                        </div>
+
+
+                        <div class="tax-result-row">
+                            <span>Total Deductions</span>
+
+                            <strong>
+                                ₦@Model.TotalDeductions.ToString("N2")
+                            </strong>
+                        </div>
+
+
+                        <div class="tax-result-row">
+                            <span>Taxable Income</span>
+
+                            <strong>
+                                ₦@Model.TaxableIncome.ToString("N2")
+                            </strong>
+                        </div>
+
+
+                        <div class="tax-result-row">
+                            <span>Monthly Tax</span>
+
+                            <strong>
+                                ₦@Model.MonthlyTaxPayable.ToString("N2")
+                            </strong>
+                        </div>
+
+
+                        <div class="tax-result-row tax-net-income">
+                            <span>Estimated Annual Net Income</span>
+
+                            <strong>
+                                ₦@Model.NetAnnualIncome.ToString("N2")
+                            </strong>
+                        </div>
+
+
+                        <div class="tax-message">
+                            @Model.TaxMessage
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="tax-empty-state">
+
+                            <div class="tax-empty-icon">₦</div>
+
+                            <h4>Ready to Calculate?</h4>
+
+                            <p>
+                                Enter your annual income and applicable
+                                deductions to see your estimated tax.
+                            </p>
+
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DISCLAIMER -->
+        <div class="tax-disclaimer">
+
+            <h5>Important Information</h5>
+
+            <p>
+                This calculator provides an educational estimate
+                based on the tax rules programmed into this application.
+                Actual tax liability may differ depending on your
+                income type, eligibility for deductions, supporting
+                documentation and applicable tax regulations.
+                Please consult a qualified tax professional for
+                official tax advice.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}

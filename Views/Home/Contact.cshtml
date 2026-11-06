@@ -1,0 +1,257 @@
+﻿
+@model BashCVPortfolio.Models.ContactViewModel
+
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<!-- CONTACT PAGE INTRODUCTION -->
+<section class="contact-hero">
+
+    <div class="container">
+
+        <p class="contact-eyebrow">LET'S CONNECT</p>
+
+        <h1>Get in Touch</h1>
+
+        <p>
+            Have an opportunity, a project idea or a professional enquiry?
+            I'd be happy to hear from you.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT CONTENT -->
+<section class="contact-content">
+
+    <div class="container">
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success contact-success" role="alert">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        <div class="row g-4">
+
+            <!-- CONTACT INFORMATION -->
+            <div class="col-lg-5">
+
+                <div class="contact-info-card">
+
+                    <p class="contact-section-label">CONTACT INFORMATION</p>
+
+                    <h2>Let's Start a Conversation</h2>
+
+                    <p class="contact-info-intro">
+                        Whether you are interested in working together,
+                        discussing an opportunity or simply connecting,
+                        feel free to reach out.
+                    </p>
+
+
+                    <div class="contact-detail">
+
+                        <div class="contact-detail-icon">01</div>
+
+                        <div>
+                            <h5>Name</h5>
+                            <p>Bash Benshak Haruna</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-detail">
+
+                        <div class="contact-detail-icon">02</div>
+
+                        <div>
+                            <h5>Location</h5>
+                            <p>Nigeria</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-detail">
+
+                        <div class="contact-detail-icon">03</div>
+
+                        <div>
+                            <h5>Email Address</h5>
+                            <p>
+                                <a href="mailto:benshakharuna23@gmail.com">
+                                    benshakharuna23@gmail.com
+                                </a>
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-detail">
+
+                        <div class="contact-detail-icon">04</div>
+
+                        <div>
+                            <h5>Phone Number</h5>
+                            <p>
+                                <a href="tel:+2348167037439">
+                                    +234 816 703 7439
+                                </a>
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-social-section">
+
+                        <h5>Connect With Me</h5>
+
+                        <div class="contact-social-links">
+
+                            <a href="https://github.com/benbash"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                GitHub
+                            </a>
+
+                            <a href="https://linkedin.com/in/bash-benshak-haruna"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                LinkedIn
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTACT FORM -->
+            <div class="col-lg-7">
+
+                <div class="contact-form-card">
+
+                    <p class="contact-section-label">SEND A MESSAGE</p>
+
+                    <h2>How Can I Help You?</h2>
+
+                    <p class="contact-form-intro">
+                        Complete the form below and provide details
+                        about your enquiry.
+                    </p>
+
+
+                    <form asp-controller="Home"
+                          asp-action="Contact"
+                          method="post">
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label asp-for="Name" class="form-label">
+                                Full Name
+                            </label>
+
+                            <input asp-for="Name"
+                                   class="form-control"
+                                   placeholder="Enter your full name" />
+
+                            <span asp-validation-for="Name"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label asp-for="Email" class="form-label">
+                                Email Address
+                            </label>
+
+                            <input asp-for="Email"
+                                   class="form-control"
+                                   placeholder="e.g. john@example.com" />
+
+                            <span asp-validation-for="Email"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label asp-for="Subject" class="form-label">
+                                Subject
+                            </label>
+
+                            <input asp-for="Subject"
+                                   class="form-control"
+                                   placeholder="What is your enquiry about?" />
+
+                            <span asp-validation-for="Subject"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+
+                        <div class="mb-4">
+
+                            <label asp-for="Message" class="form-label">
+                                Your Message
+                            </label>
+
+                            <textarea asp-for="Message"
+                                      class="form-control"
+                                      rows="6"
+                                      placeholder="Write your message here. Please provide enough details about your enquiry..."></textarea>
+
+                            <span asp-validation-for="Message"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+
+                        <button type="submit"
+                                class="btn btn-primary contact-submit-btn">
+                            Send Message
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}

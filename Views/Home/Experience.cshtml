@@ -1,0 +1,154 @@
+﻿
+@model List<BashCVPortfolio.Models.Experience>
+
+@{
+    ViewData["Title"] = "Work Experience";
+}
+
+<!-- EXPERIENCE PAGE INTRODUCTION -->
+<section class="experience-hero">
+
+    <div class="container">
+
+        <p class="experience-eyebrow">
+            MY PROFESSIONAL JOURNEY
+        </p>
+
+        <h1>Work Experience</h1>
+
+        <p>
+            My professional journey across education,
+            information technology and software development.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- PROFESSIONAL EXPERIENCE TIMELINE -->
+<section class="experience-content">
+
+    <div class="container">
+
+        <div class="section-heading text-center">
+
+            <h2>Professional Background</h2>
+
+            <p>
+                A record of my professional roles,
+                responsibilities and practical experience.
+            </p>
+
+        </div>
+
+
+        <div class="experience-timeline">
+
+            @foreach (var experience in Model)
+            {
+                <div class="experience-item">
+
+                    <div class="experience-marker"></div>
+
+                    <div class="experience-card">
+
+                        <!-- Job heading -->
+                        <div class="experience-card-header">
+
+                            <div>
+
+                                <h3>@experience.JobTitle</h3>
+
+                                <h4>@experience.Organization</h4>
+
+                            </div>
+
+                            <span class="experience-category">
+                                @experience.Category
+                            </span>
+
+                        </div>
+
+
+                        <!-- Employment details -->
+                        <div class="experience-meta">
+
+                            <span>
+                                <strong>Location:</strong>
+                                @experience.Location
+                            </span>
+
+                            <span>
+                                <strong>Period:</strong>
+                                @experience.EmploymentPeriod
+                            </span>
+
+                        </div>
+
+
+                        <!-- Job description -->
+                        <div class="experience-description">
+
+                            <p>
+                                @experience.Description
+                            </p>
+
+                        </div>
+
+
+                        <!-- Responsibilities -->
+                        @if (experience.Responsibilities != null &&
+                             experience.Responsibilities.Any())
+                        {
+                            <div class="experience-responsibilities">
+
+                                <h5>Key Responsibilities</h5>
+
+                                <ul>
+
+                                    @foreach (var responsibility in experience.Responsibilities)
+                                    {
+                                        <li>
+                                            <span class="responsibility-marker"></span>
+
+                                            <span>
+                                                @responsibility
+                                            </span>
+                                        </li>
+                                    }
+
+                                </ul>
+
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROFESSIONAL SUMMARY -->
+<section class="experience-summary">
+
+    <div class="container text-center">
+
+        <h2>Experience, Learning and Growth</h2>
+
+        <p>
+            My professional experiences have strengthened
+            my technical abilities, communication skills,
+            problem-solving approach and commitment to
+            continuous professional development.
+        </p>
+
+    </div>
+
+</section>

@@ -1,0 +1,131 @@
+﻿
+@model BashCVPortfolio.Models.AboutMe
+
+@{
+    ViewData["Title"] = "About Me";
+}
+
+<!-- ABOUT PAGE INTRODUCTION -->
+<section class="about-hero">
+    <div class="container">
+
+        <p class="about-eyebrow">GET TO KNOW ME</p>
+
+        <h1>About Me</h1>
+
+        <p>
+            Discover my professional background,
+            career aspirations and areas of interest.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- PROFESSIONAL BIOGRAPHY -->
+<section class="about-content-section">
+    <div class="container">
+
+        <div class="row g-4 align-items-stretch">
+
+            <div class="col-lg-8">
+
+                <div class="about-card biography-card">
+
+                    <span class="about-label">
+                        MY BACKGROUND
+                    </span>
+
+                    <h2>Professional Biography</h2>
+
+                    <p class="about-body">
+                        @Model.Biography
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-4">
+
+                <div class="about-side-card">
+
+                   <img src="~/images/bash-profile.jpeg"
+                       alt="Bash Benshak Haruna - Computer Engineer and Backend Developer"
+                       class="profile-photo" />
+
+                    <h3>Bash Benshak Haruna</h3>
+
+                    <p>
+                        Computer Engineer |
+                        Backend Developer |
+                        ICT Educator
+                    </p>
+
+                    <div class="about-divider"></div>
+
+                    <p class="about-small-text">
+                        Passionate about technology,
+                        software development and education.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CAREER OBJECTIVE -->
+        <div class="about-card career-card mt-4">
+
+            <span class="about-label">
+                MY PROFESSIONAL DIRECTION
+            </span>
+
+            <h2>Career Objective</h2>
+
+            <p class="about-body">
+                @Model.CareerObjective
+            </p>
+
+        </div>
+
+
+        <!-- PROFESSIONAL INTERESTS -->
+        <div class="interests-section mt-5">
+
+            <div class="section-heading1">
+
+                <h2>Professional Interests</h2>
+
+                <p>
+                    Areas I am passionate about exploring
+                    and developing professionally.
+                </p>
+
+            </div>
+
+            <div class="row g-3">
+
+                @foreach (var interest in Model.ProfessionalInterests)
+                {
+                    <div class="col-md-6 col-lg-6">
+
+                        <div class="interest-card">
+
+                            <div class="interest-marker"></div>
+
+                            <h5>@interest</h5>
+
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+</section>

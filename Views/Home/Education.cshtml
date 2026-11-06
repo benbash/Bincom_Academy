@@ -1,0 +1,96 @@
+﻿
+@model List<BashCVPortfolio.Models.Education>
+
+@{
+    ViewData["Title"] = "Education";
+}
+
+<!-- EDUCATION PAGE INTRODUCTION -->
+<section class="education-hero">
+
+    <div class="container">
+
+        <p class="education-eyebrow">
+            MY ACADEMIC JOURNEY
+        </p>
+
+        <h1>Education and Training</h1>
+
+        <p>
+            My academic qualifications and professional learning
+            experiences that have contributed to my technical
+            knowledge and career development.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- EDUCATION TIMELINE -->
+<section class="education-content">
+
+    <div class="container">
+
+        <div class="section-heading text-center">
+
+            <h2>Academic Background</h2>
+
+            <p>
+                My educational qualifications and learning journey.
+            </p>
+
+        </div>
+
+        <div class="education-timeline">
+
+            @foreach (var item in Model)
+            {
+                <div class="education-item">
+
+                    <div class="education-marker"></div>
+
+                    <div class="education-card">
+
+                        <div class="education-year">
+                            @item.Year
+                        </div>
+
+                        <h3>@item.Qualification</h3>
+
+                        <h4>@item.Institution</h4>
+
+                        <div class="education-divider"></div>
+
+                        <p>
+                            @item.Description
+                        </p>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTINUOUS LEARNING -->
+<section class="education-development">
+
+    <div class="container text-center">
+
+        <h2>Learning Beyond the Classroom</h2>
+
+        <p>
+            I believe in continuous professional development
+            through practical projects, technical training,
+            certifications and independent learning.
+        </p>
+
+    </div>
+
+</section>

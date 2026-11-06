@@ -1,0 +1,182 @@
+﻿
+@model List<BashCVPortfolio.Models.Project>
+
+@{
+    ViewData["Title"] = "My Projects";
+}
+
+<!-- PROJECTS PAGE INTRODUCTION -->
+<section class="projects-hero">
+
+    <div class="container">
+
+        <p class="projects-eyebrow">
+            MY DEVELOPMENT PORTFOLIO
+        </p>
+
+        <h1>My Projects</h1>
+
+        <p>
+            Explore my practical work in backend development,
+            frontend development and software engineering.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECTS SHOWCASE -->
+<section class="projects-content">
+
+    <div class="container">
+
+        <div class="section-heading text-center">
+
+            <h2>Selected Projects</h2>
+
+            <p>
+                A selection of projects demonstrating my
+                technical knowledge and practical development skills.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            @foreach (var project in Model)
+            {
+                <div class="col-md-6">
+
+                    <div class="project-card">
+
+                        <!-- Project heading -->
+                        <div class="project-card-header">
+
+                            <span class="project-category">
+                                @project.Category
+                            </span>
+
+                            <h3>@project.ProjectName</h3>
+
+                        </div>
+
+
+                        <!-- Project description -->
+                        <div class="project-description">
+
+                            <p>
+                                @project.Description
+                            </p>
+
+                        </div>
+
+
+                        <!-- Technologies -->
+                        <div class="project-technologies">
+
+                            <h5>Technologies Used</h5>
+
+                            <div class="technology-tags">
+
+                                @foreach (var technology in project.Technologies)
+                                {
+                                    <span class="technology-tag">
+                                        @technology
+                                    </span>
+                                }
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Key features -->
+                        <div class="project-features">
+
+                            <h5>Key Features</h5>
+
+                            <ul>
+
+                                @foreach (var feature in project.KeyFeatures)
+                                {
+                                    <li>
+                                        <span class="feature-marker"></span>
+
+                                        <span>@feature</span>
+                                    </li>
+                                }
+
+                            </ul>
+
+                        </div>
+
+
+                        <!-- Project links -->
+                        <div class="project-links">
+
+                            @if (!string.IsNullOrWhiteSpace(project.GitHubUrl))
+                            {
+                                <a href="@project.GitHubUrl"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="btn btn-primary btn-sm">
+                                    View GitHub Repository
+                                </a>
+                            }
+
+                            @if (!string.IsNullOrWhiteSpace(project.LiveDemoUrl))
+                            {
+                                <a href="@project.LiveDemoUrl"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="btn btn-outline-primary btn-sm">
+                                    View Live Demo
+                                </a>
+                            }
+
+                            @if (string.IsNullOrWhiteSpace(project.GitHubUrl)
+                                && string.IsNullOrWhiteSpace(project.LiveDemoUrl))
+                            {
+                                <span class="project-links-note">
+                                    Repository and demo links coming soon.
+                                </span>
+                            }
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECTS CALL TO ACTION -->
+<section class="projects-cta">
+
+    <div class="container text-center">
+
+        <h2>Interested in Working Together?</h2>
+
+        <p>
+            I welcome opportunities to collaborate,
+            contribute to software projects and build
+            practical technology solutions.
+        </p>
+
+        <a asp-controller="Home"
+           asp-action="Contact"
+           class="btn btn-light">
+            Contact Me
+        </a>
+
+    </div>
+
+</section>

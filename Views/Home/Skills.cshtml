@@ -1,0 +1,98 @@
+﻿
+@model List<BashCVPortfolio.Models.Skill>
+
+@{
+    ViewData["Title"] = "Technical Skills";
+}
+
+<!-- SKILLS PAGE INTRODUCTION -->
+<section class="skills-hero">
+
+    <div class="container">
+
+        <p class="skills-eyebrow">MY TECHNICAL EXPERTISE</p>
+
+        <h1>Technical Skills</h1>
+
+        <p>
+            Technologies, tools and competencies I have developed
+            through learning, professional experience and practical projects.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- SKILLS CATEGORY CARDS -->
+<section class="skills-content">
+
+    <div class="container">
+
+        <div class="section-heading text-center">
+
+            <h2>My Areas of Expertise</h2>
+
+            <p>
+                A collection of my technical and professional competencies.
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            @foreach (var skill in Model)
+            {
+                <div class="col-md-6 col-lg-6">
+
+                    <div class="skill-category-card">
+
+                        <div class="skill-category-header">
+
+                            <div class="skill-category-icon">
+                                @skill.Category.Substring(0, 1).ToUpper()
+                            </div>
+
+                            <h3>@skill.Category</h3>
+
+                        </div>
+
+                        <div class="skill-tags">
+
+                            @foreach (var item in skill.SkillNames)
+                            {
+                                <span class="skill-tag">
+                                    @item
+                                </span>
+                            }
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROFESSIONAL DEVELOPMENT SECTION -->
+<section class="skills-development">
+
+    <div class="container text-center">
+
+        <h2>Continuous Learning and Development</h2>
+
+        <p>
+            I am committed to continuously improving my technical
+            capabilities, exploring new technologies and building
+            practical solutions through hands-on projects.
+        </p>
+
+    </div>
+
+</section>

@@ -1,0 +1,183 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - BashCVPortfolio</title>
+
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+
+    <link rel="stylesheet"
+          href="~/BashCVPortfolio.styles.css"
+          asp-append-version="true" />
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="site-header">
+
+        <nav class="site-navbar">
+
+            <div class="nav-container">
+
+                <a class="navbar-brand"
+                   asp-controller="Home"
+                   asp-action="Index">
+                    Bash<span>CV</span>
+                </a>
+
+                <button class="menu-toggle"
+                        id="menuToggle"
+                        type="button"
+                        aria-label="Toggle navigation"
+                        aria-expanded="false"
+                        aria-controls="mainNav">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
+
+                <div class="navbar-collapse" id="mainNav">
+
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-controller="Home"
+                               asp-action="Index">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-controller="Home"
+                               asp-action="About">About</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-controller="Home"
+                               asp-action="Skills">Skills</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-controller="Home"
+                               asp-action="Education">Education</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-controller="Home"
+                               asp-action="Experience">Experience</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-controller="Home"
+                               asp-action="Projects">Projects</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-controller="Tax"
+                               asp-action="Index">
+                                Tax Calculator
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-controller="Home"
+                               asp-action="Contact">Contact</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- Main page content -->
+    <main class="site-main">
+
+        @RenderBody()
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-content">
+
+                <div>
+                    <h5>Bash Benshak Haruna</h5>
+                    <p>
+    Computer Engineer | Backend Developer | ICT Educator
+</p>
+                </div>
+
+                <div class="footer-links">
+                    <a asp-controller="Home"
+                       asp-action="Index">Home</a>
+
+                    <a asp-controller="Home"
+                       asp-action="Projects">Projects</a>
+
+                    <a asp-controller="Home"
+                       asp-action="Contact">Contact</a>
+                </div>
+
+            </div>
+
+            <hr />
+
+            <p class="copyright">
+                &copy; @DateTime.Now.Year Bash Benshak Haruna.
+                All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Back to top button -->
+    <button id="backToTop"
+            class="back-to-top"
+            type="button"
+            aria-label="Back to top">
+
+        &uarr;
+
+    </button>
+
+
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

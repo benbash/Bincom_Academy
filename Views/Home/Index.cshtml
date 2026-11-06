@@ -1,0 +1,219 @@
+﻿@model BashCVPortfolio.Models.PersonalInfo
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<!-- HERO SECTION -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center g-5">
+
+            <!-- Introduction -->
+            <div class="col-lg-7">
+
+                <p class="hero-eyebrow">
+                    WELCOME TO MY PORTFOLIO
+                </p>
+
+                <h1 class="hero-title">
+                    Hello, I'm
+                    <span>@Model.FullName</span>
+                </h1>
+
+                <h2 class="hero-subtitle">
+                    @Model.ProfessionalTitle
+                </h2>
+
+                <p class="hero-description">
+                    @Model.ProfessionalSummary
+                </p>
+
+                <p class="hero-location">
+                    <strong>Location:</strong> @Model.Location
+                </p>
+
+                <div class="hero-buttons">
+
+    <a asp-controller="Home"
+       asp-action="Projects"
+       class="btn btn-primary">
+        Explore My Projects
+    </a>
+
+    <a href="@Url.Content("~/documents/Bash-Benshak-Haruna-CV.pdf")"
+       download="Bash-Benshak-Haruna-CV.pdf"
+       class="btn btn-outline-primary">
+        <i class="bi bi-download"></i>
+        Download My CV
+    </a>
+
+</div> 
+                <div class="hero-social-links">
+
+                    @if (!string.IsNullOrWhiteSpace(Model.GitHubUrl))
+                    {
+                        <a href="@Model.GitHubUrl"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            GitHub
+                        </a>
+                    }
+
+                    @if (!string.IsNullOrWhiteSpace(Model.LinkedInUrl))
+                    {
+                        <a href="@Model.LinkedInUrl"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            LinkedIn
+                        </a>
+                    }
+
+                </div>
+
+            </div>
+
+            <!-- Profile visual -->
+            <div class="col-lg-5">
+
+                <div class="hero-profile-card">
+
+                 <img src="~/images/bash-profile.jpeg"
+                       alt="Bash Benshak Haruna - Computer Engineer and Backend Developer"
+                       class="profile-photo" />
+                  <h3>@Model.FullName</h3>
+
+                    <p>
+                        Computer Engineer |
+                        Backend Developer |
+                        ICT Educator
+                    </p>
+
+                    <div class="profile-divider"></div>
+
+                    <p class="profile-location">
+                        @Model.Location
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- PROFESSIONAL HIGHLIGHTS -->
+<section class="highlights-section">
+    <div class="container">
+
+        <div class="section-heading text-center">
+            <h2>What I Bring to the Table</h2>
+
+            <p>
+                A combination of technical knowledge,
+                software development and educational experience.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="highlight-card">
+                    <div class="highlight-icon">01</div>
+
+                    <h4>Backend Development</h4>
+
+                    <p>
+                        Building server-side applications,
+                        REST APIs and database-driven solutions.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="highlight-card">
+                    <div class="highlight-icon">02</div>
+
+                    <h4>Computer Engineering</h4>
+
+                    <p>
+                        Applying technical knowledge to
+                        computer systems and practical
+                        technology solutions.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="highlight-card">
+                    <div class="highlight-icon">03</div>
+
+                    <h4>ICT Education</h4>
+
+                    <p>
+                        Teaching computer studies, ICT
+                        and practical digital skills.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- FEATURED PROJECTS -->
+<section class="featured-section">
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-8">
+                <h2>Explore My Projects</h2>
+
+                <p>
+                    Discover some of my work in backend
+                    development, web development and
+                    practical software solutions.
+                </p>
+            </div>
+
+            <div class="col-lg-4 text-lg-end">
+
+                <a asp-controller="Home"
+                   asp-action="Projects"
+                   class="btn btn-primary">
+                    View All Projects
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- CONTACT CALL TO ACTION -->
+<section class="contact-cta">
+    <div class="container text-center">
+
+        <h2>Let's Connect</h2>
+
+        <p>
+            I welcome opportunities to collaborate,
+            contribute to meaningful projects and
+            grow professionally.
+        </p>
+
+        <a asp-controller="Home"
+           asp-action="Contact"
+           class="btn btn-light">
+            Get in Touch
+        </a>
+
+    </div>
+</section>
