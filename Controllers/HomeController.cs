@@ -552,25 +552,25 @@ namespace BashCVPortfolio.Controllers
         }
 
         // Display the Contact page
-        public IActionResult Contact()
-        {
-            return View(new ContactViewModel());
-        }
+        //public IActionResult Contact()
+        //{
+        //    return View(new ContactViewModel());
+        //}
 
         // Process the Contact form
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Contact(ContactViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                TempData["SuccessMessage"] =
-                    "Your message passed validation. Email delivery will be configured in a later lesson.";
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult Contact(ContactViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        TempData["SuccessMessage"] =
+        //            "Your message passed validation. Email delivery will be configured in a later lesson.";
 
-                return RedirectToAction(nameof(Contact));
-            }
+        //        return RedirectToAction(nameof(Contact));
+        //    }
 
-            return View(model);
-        }
+        //    return View(model);
+        //}
     }
 }
